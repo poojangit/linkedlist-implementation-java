@@ -23,18 +23,21 @@ public class LinkedList {
 
     //method to insert the data at the end of the list
     public void insertLast(int data){
+        int[] arr = {200,300,400};
        Node tail = head;
-    //check if the head is empty or not
-       if(head == null){
-           head = new Node(data);
-       } else {
-           // keep on traversing the list until the tail reaches the last node
-           while (tail.next != null) {
-               // move the tail to the next node
-               tail = tail.next;
+       for(int i=0; i<arr.length;i++) {
+           //check if the head is empty or not
+           if (head == null) {
+               head = new Node(data);
+           } else {
+               // keep on traversing the list until the tail reaches the last node
+               while (tail.next != null) {
+                   // move the tail to the next node
+                   tail = tail.next;
+               }
+               // insert the new node at the end of the list
+               tail.next = new Node(arr[i]);
            }
-           // insert the new node at the end of the list
-           tail.next = new Node(data);
        }
     }
     // method to print the list
