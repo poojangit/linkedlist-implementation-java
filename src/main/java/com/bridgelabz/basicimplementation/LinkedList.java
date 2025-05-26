@@ -20,6 +20,15 @@ public class LinkedList {
             }
         }
     }
+
+    //method to insert the data at the end of the list
+    public void insertLast(int data){
+       Node tail = head;
+       while(tail.next != null){
+           tail = tail.next;
+       }
+       tail.next = new Node(data);
+    }
     // method to print the list
     public void printList(){
         Node current = head;

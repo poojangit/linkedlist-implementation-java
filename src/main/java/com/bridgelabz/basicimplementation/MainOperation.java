@@ -8,7 +8,8 @@ public class MainOperation {
         LinkedList ll = new LinkedList();
         //calling the method with data as a parameters to insert the data at the beginning.
         ll.insertFirst(5);
-//        ll.insertFirst(30);
+        //ll.insertFirst(30);
+        ll.insertLast(100);
         ll.printList();
     }
 }
