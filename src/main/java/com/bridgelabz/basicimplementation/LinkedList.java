@@ -7,14 +7,13 @@ public class LinkedList {
     // method to insert the data first in the list
     public void insertFirst(int data) {
         int[] arr = {10,20,30,40,50};
-        head = new Node(data);
+//        head = new Node(data);
         for(int i=0 ; i<arr.length; i++) {
             // if there is no linked list pr if the head is null, then make the head as a new node
             if (head == null) {
                 head = new Node(arr[i]);
             } else {
-                Node temp;
-                temp = new Node(arr[i]);
+                Node temp = new Node(arr[i]);
                 temp.next = head;
                 head = temp;
             }
@@ -39,6 +38,16 @@ public class LinkedList {
                tail.next = new Node(arr[i]);
            }
        }
+    }
+    // method to add the data at the end using recursion
+    public Node createLinkedListUsingRecursionAtTheEnd(int[] arr, int index, int size){
+        if(index == size) {
+            return null;
+        }
+        Node temp = new Node(arr[index]);
+        // call the method again to traverse the list
+        temp.next = createLinkedListUsingRecursionAtTheEnd(arr, index+1, size);
+        return temp;
     }
     // method to print the list
     public void printList(){
