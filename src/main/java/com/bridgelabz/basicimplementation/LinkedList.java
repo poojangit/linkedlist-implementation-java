@@ -6,9 +6,9 @@ public class LinkedList {
 
     // method to insert the data first in the list
     public void insertFirst(int data) {
-        int[] arr = {10,20,30,40,50};
+        int[] arr = {10, 20, 30, 40, 50};
 //        head = new Node(data);
-        for(int i=0 ; i<arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             // if there is no linked list pr if the head is null, then make the head as a new node
             if (head == null) {
                 head = new Node(arr[i]);
@@ -21,34 +21,46 @@ public class LinkedList {
     }
 
     //method to insert the data at the end of the list
-    public void insertLast(int data){
-        int[] arr = {200,300,400};
-       Node tail = head;
-       for(int i=0; i<arr.length;i++) {
-           //check if the head is empty or not
-           if (head == null) {
-               head = new Node(data);
-           } else {
-               // keep on traversing the list until the tail reaches the last node
-               while (tail.next != null) {
-                   // move the tail to the next node
-                   tail = tail.next;
-               }
-               // insert the new node at the end of the list
-               tail.next = new Node(arr[i]);
-           }
-       }
+    public void insertLast(int data) {
+        int[] arr = {200, 300, 400};
+        Node tail = head;
+        for (int i = 0; i < arr.length; i++) {
+            //check if the head is empty or not
+            if (head == null) {
+                head = new Node(data);
+            } else {
+                // keep on traversing the list until the tail reaches the last node
+                while (tail.next != null) {
+                    // move the tail to the next node
+                    tail = tail.next;
+                }
+                // insert the new node at the end of the list
+                tail.next = new Node(arr[i]);
+            }
+        }
     }
+
     // method to add the data at the end using recursion
-    public Node createLinkedListUsingRecursionAtTheEnd(int[] arr, int index, int size){
-        if(index == size) {
+    public Node createLinkedListUsingRecursionAtTheEnd(int[] arr, int index, int size) {
+        if (index == size) {
             return null;
         }
         Node temp = new Node(arr[index]);
         // call the method again to traverse the list
-        temp.next = createLinkedListUsingRecursionAtTheEnd(arr, index+1, size);
+        temp.next = createLinkedListUsingRecursionAtTheEnd(arr, index + 1, size);
         return temp;
     }
+
+    // method to add the data at the beginning using recursion
+    public Node createLinkedListUsingRecursionAtTheBeginning(int[] arr, int index, int size, Node prev) {
+        if(index == size){
+            return prev;
+        }
+        Node temp = new Node(arr[index]);
+        temp.next = prev;
+        return createLinkedListUsingRecursionAtTheBeginning(arr, index + 1, size, temp);
+    }
+
     // method to print the list
     public void printList(){
         Node current = head;
@@ -56,5 +68,6 @@ public class LinkedList {
             System.out.print(current.data + "-->");
             current = current.next;
         }
+        System.out.println("NULL");
     }
 }
