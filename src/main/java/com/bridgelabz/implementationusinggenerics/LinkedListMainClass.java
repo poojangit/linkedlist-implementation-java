@@ -27,6 +27,7 @@ public class LinkedListMainClass<E extends Comparable> {
 //        System.out.println(list.search(30));
         list.insertDataNextToPosition(30, 40);
         list.deleteNode(40);
+        list.sort();
         System.out.println(list);
 
     }
@@ -192,6 +193,27 @@ public class LinkedListMainClass<E extends Comparable> {
        System.out.println("Element " + data+ " not found");
         System.out.println("Size of the list is " + size() );
        return false;
+    }
+
+    //UC-10 Implementation
+    //method to sort the elements in linked list
+    public <E extends Comparable> void sort(){
+        if(head == null || head.next == null){
+            System.out.println("List is empty cannot sort");
+            return;
+        }
+        //sorting logic
+        for(int i = 0; i < this.size(); i++){
+            Node temp = head;
+            while(temp.next!= null){
+                if(temp.data.compareTo(temp.next.data) > 0){
+                    Comparable tempData = temp.data;
+                    temp.data = temp.next.data;
+                    temp.next.data = tempData;
+                }
+                temp = temp.next;
+            }
+        }
     }
 
     //method to print the list
