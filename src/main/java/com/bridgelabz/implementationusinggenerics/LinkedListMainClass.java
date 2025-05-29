@@ -5,7 +5,7 @@ public class LinkedListMainClass<E extends Comparable> {
     Node head;
 
     public static void main(String[] args) {
-        createSimpleLinkedList();
+//        createSimpleLinkedList();
         //create a linked list using generics
         //creating a new linked list object because the methods in the linked list classes does not belong to the class.
         LinkedListMainClass list = new LinkedListMainClass();
@@ -22,9 +22,10 @@ public class LinkedListMainClass<E extends Comparable> {
         //delete first element
 //        list.pop(56);
         //delete last element
-        list.popLast();
+//        list.popLast();
         //search the element
-        System.out.println(list.search(30));
+//        System.out.println(list.search(30));
+        list.insertDataNextToPosition(30, 40);
         System.out.println(list);
 
     }
@@ -141,6 +142,28 @@ public class LinkedListMainClass<E extends Comparable> {
             }
             temp = temp.next;
         }
+        return false;
+    }
+
+    //UC8 - implementation
+    //method to insert the data next to based on the element position
+    public boolean insertDataNextToPosition(E positiondata, E data){
+        //checking head is empty or not
+        if(head == null){
+            System.out.println("List is empty");
+            return false;
+        }
+        Node newNode = new Node(data);
+        Node temp = head;
+        while(temp != null){
+            if(temp.data.equals(positiondata)){
+                newNode.next = temp.next;
+                temp.next = newNode;
+                return true;
+            }
+            temp = temp.next;
+        }
+        System.out.println("Element " + positiondata+ " not found");
         return false;
     }
 
