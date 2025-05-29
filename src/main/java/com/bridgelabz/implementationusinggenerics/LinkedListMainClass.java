@@ -26,6 +26,7 @@ public class LinkedListMainClass<E extends Comparable> {
         //search the element
 //        System.out.println(list.search(30));
         list.insertDataNextToPosition(30, 40);
+        list.deleteNode(40);
         System.out.println(list);
 
     }
@@ -165,6 +166,32 @@ public class LinkedListMainClass<E extends Comparable> {
         }
         System.out.println("Element " + positiondata+ " not found");
         return false;
+    }
+
+    //UC9-Implementation
+    //method to delete the node from the linked list sequence ann to show its final size
+    public boolean deleteNode(E data){
+       if(head == null){
+           System.out.println("List is empty");
+           return false;
+       }
+
+       if(head.data.equals(data)){
+           head = head.next;
+           System.out.println("size of the list : " + this.size());
+           return true;
+       }
+       Node temp = head;
+       while(temp.next != null){
+           if(temp.next.data.equals(data)){
+               temp.next = temp.next.next;
+               return true;
+           }
+           temp = temp.next;
+       }
+       System.out.println("Element " + data+ " not found");
+        System.out.println("Size of the list is " + size() );
+       return false;
     }
 
     //method to print the list

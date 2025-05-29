@@ -25,4 +25,8 @@ class LinkedListMainClassTest {
     void insertDataNextToPosition() {
         assertTrue(list.search(40.90), "data 100.90 should be found");
     }
+    @Test
+    void deleteNode() {
+        assertTrue(list.deleteNode(30.90), "data 30.90 should be deleted");
+    }
 }
