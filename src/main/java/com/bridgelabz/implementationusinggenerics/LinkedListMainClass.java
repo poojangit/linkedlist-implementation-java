@@ -23,6 +23,8 @@ public class LinkedListMainClass<E extends Comparable> {
 //        list.pop(56);
         //delete last element
         list.popLast();
+        //search the element
+        System.out.println(list.search(30));
         System.out.println(list);
 
     }
@@ -128,6 +130,20 @@ public class LinkedListMainClass<E extends Comparable> {
         System.out.println("Deleted " + temp.data);
         return true;
     }
+    //UC7 - implementation
+    //method to search the element in the list
+    public boolean search(E data) {
+        Node temp = head;
+        //traverse the list till the element is found
+        while (temp != null) {
+            if (temp.data.equals(data)) {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
     //method to print the list
     @Override
     public String toString(){
