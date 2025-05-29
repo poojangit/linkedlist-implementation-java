@@ -61,6 +61,18 @@ public class LinkedList {
         return createLinkedListUsingRecursionAtTheBeginning(arr, index + 1, size, temp);
     }
 
+    // method to insert at the particular position
+    public void insertAtParticularPosition(int data, int position) {
+        Node temp = head;
+        // check if the position is greater than the size of the list or not
+        for (int i = 0; i < position - 1; i++) {
+            temp = temp.next;
+        }
+        Node newNode = new Node(data);
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
+
     // method to print the list
     public void printList(){
         Node current = head;

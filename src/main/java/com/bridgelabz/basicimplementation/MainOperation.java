@@ -14,6 +14,7 @@ public class MainOperation {
         ll.insertLast(6);
         // Create a list using recursion at the beginning
         ll.head = ll.createLinkedListUsingRecursionAtTheBeginning(new int[]{1000, 2000, 3000, 4000, 5000}, 0, 5, null);
+        ll.insertAtParticularPosition(100, 2);
         ll.printList();
     }
 }
