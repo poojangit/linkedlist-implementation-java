@@ -11,14 +11,16 @@ public class LinkedListMainClass<E extends Comparable> {
         LinkedListMainClass list = new LinkedListMainClass();
         //add data from the head
         list.addFromHead(70);
-//        list.addFromHead(30);
+        list.addFromHead(30);
         list.addFromHead(56);
         //add data from the tail
-        list.addFromTail(56);
+//        list.addFromTail(56);
 //        list.addFromTail(30);
-        list.addFromTail(70);
+//        list.addFromTail(70);
         //insert data in the middle
-        list.insertInMiddle(30);
+//        list.insertInMiddle(30);
+        //delete first element
+        list.pop(56);
         System.out.println(list);
 
     }
@@ -91,6 +93,20 @@ public class LinkedListMainClass<E extends Comparable> {
         }
         return ++size;
     }
+    //UC5 - implementation
+    // method to delete the first element in the list
+    public boolean pop(E data) {
+        //check if the head is empty or not
+        if (head == null) {
+            System.out.println("List is empty");
+            return false;
+        }
+        Node temp = head;
+        this.head = head.next;
+        System.out.println("Deleted " + temp.data);
+        return true;
+    }
+
     //method to print the list
     @Override
     public String toString(){
