@@ -11,12 +11,14 @@ public class LinkedListMainClass<E extends Comparable> {
         LinkedListMainClass list = new LinkedListMainClass();
         //add data from the head
         list.addFromHead(70);
-        list.addFromHead(30);
+//        list.addFromHead(30);
         list.addFromHead(56);
         //add data from the tail
         list.addFromTail(56);
-        list.addFromTail(30);
+//        list.addFromTail(30);
         list.addFromTail(70);
+        //insert data in the middle
+        list.insertInMiddle(30);
         System.out.println(list);
 
     }
@@ -55,6 +57,40 @@ public class LinkedListMainClass<E extends Comparable> {
         return true;
     }
 
+    //UC4 - implementation
+    // method to insert the node in between the nodes
+    public boolean insertInMiddle(E data){
+        // check that if the head is empty or not
+        if(head == null){
+            System.out.println("List is empty");
+            return false;
+        }
+        Node newNode = new Node(data);
+        Node temp = head;
+        //traverse the list till the middle
+       for(int i=0; i<this.size()/2; i++){
+           temp = temp.next;
+       }
+        newNode.next = temp.next;
+        temp.next = newNode;
+        return true;
+    }
+    //method to display the size of the list
+    public int size(){
+        //check if the head is empty or not
+        if(head == null) {
+            return 0;
+        }
+        //variable to store the size of the list
+        int size = 0;
+        Node temp = this.head;
+        while(temp.next!= null)
+        {
+            size++;
+            temp = temp.next;
+        }
+        return ++size;
+    }
     //method to print the list
     @Override
     public String toString(){
