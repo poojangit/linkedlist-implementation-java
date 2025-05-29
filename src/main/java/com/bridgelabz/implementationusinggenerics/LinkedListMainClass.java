@@ -20,7 +20,9 @@ public class LinkedListMainClass<E extends Comparable> {
         //insert data in the middle
 //        list.insertInMiddle(30);
         //delete first element
-        list.pop(56);
+//        list.pop(56);
+        //delete last element
+        list.popLast();
         System.out.println(list);
 
     }
@@ -61,38 +63,39 @@ public class LinkedListMainClass<E extends Comparable> {
 
     //UC4 - implementation
     // method to insert the node in between the nodes
-    public boolean insertInMiddle(E data){
+    public boolean insertInMiddle(E data) {
         // check that if the head is empty or not
-        if(head == null){
+        if (head == null) {
             System.out.println("List is empty");
             return false;
         }
         Node newNode = new Node(data);
         Node temp = head;
         //traverse the list till the middle
-       for(int i=0; i<this.size()/2; i++){
-           temp = temp.next;
-       }
+        for (int i = 0; i < this.size() / 2; i++) {
+            temp = temp.next;
+        }
         newNode.next = temp.next;
         temp.next = newNode;
         return true;
     }
+
     //method to display the size of the list
-    public int size(){
+    public int size() {
         //check if the head is empty or not
-        if(head == null) {
+        if (head == null) {
             return 0;
         }
         //variable to store the size of the list
         int size = 0;
         Node temp = this.head;
-        while(temp.next!= null)
-        {
+        while (temp.next != null) {
             size++;
             temp = temp.next;
         }
         return ++size;
     }
+
     //UC5 - implementation
     // method to delete the first element in the list
     public boolean pop(E data) {
@@ -107,6 +110,24 @@ public class LinkedListMainClass<E extends Comparable> {
         return true;
     }
 
+    //UC6 - implementation
+    //method to delete the last element in the list
+    public boolean popLast() {
+        //check if the head is empty or not
+        if (head == null) {
+            System.out.println("List is empty");
+            return false;
+        }
+        Node temp = this.head;
+        Node prev = temp;
+        while (temp.next != null) {
+            prev = temp;
+            temp = temp.next;
+        }
+        prev.next = null;
+        System.out.println("Deleted " + temp.data);
+        return true;
+    }
     //method to print the list
     @Override
     public String toString(){
